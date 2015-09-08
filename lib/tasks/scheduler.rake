@@ -3,12 +3,6 @@ include ApplicationHelper
 
 desc "This task is called by the Heroku scheduler add-on"
 
-  task :update_page => :environment do
-    puts "Updating whole page"
-    scrape_page
-    build_data
-  end
-
   task :clear_data => :environment do
     Tag.destroy_all
     Listing.destroy_all
@@ -21,8 +15,7 @@ desc "This task is called by the Heroku scheduler add-on"
   end
 
   task :build_outcodes => :environment do
-
-
+    build_outcodes_now
   end
 
   task :build_listings => :environment do

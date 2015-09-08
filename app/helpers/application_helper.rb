@@ -1,7 +1,7 @@
 module ApplicationHelper
 
 
-  def build_outcodes
+  def build_outcodes_now
     arr_of_arrs = CSV.read("postcode-outcodes.csv")
     counter = true
     arr_of_arrs.each do |codes|
@@ -9,12 +9,11 @@ module ApplicationHelper
         counter = false
       else
         Outcode.create(
-
-
+          :code => codes[1]
           )
       end
     end
-
-
   end
+
+
 end

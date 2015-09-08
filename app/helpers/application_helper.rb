@@ -22,31 +22,33 @@ module ApplicationHelper
       puts "NOW MOVING ON TO OUT CODE #{my_code.code}"
       scrape = RestClient.get("http://api.rightmove.co.uk/api/sale/find?+&sortType=1&numberOfPropertiesRequested=9999&locationIdentifier=OUTCODE%5E#{my_code.secret_code}&apiApplication=IPAD")
       scrape = JSON.parse(scrape)
-      scrape["properties"].each do |property|
-        begin
-          if property["bedrooms"]
-            bedrooms = property["bedrooms"]
-          else
-            bedrooms = nil
-          end
+      if scrape["properties"] == []
+        scrape["properties"].each do |property|
+          begin
+            if property["bedrooms"]
+              bedrooms = property["bedrooms"]
+            else
+              bedrooms = nil
+            end
 
-          Listing.create(
-            :outcode_id => my_code.id,
-            :latitude => property["latitude"],
-            :longitude => property["longitude"],
-            :property_type => property["propertyType"],
-            :bedrooms => bedrooms,
-            :price => property["price"],
-            :identifier => property["identifier"],
-            :address => property["address"],
-            :summary => property["summary"],
-            :small_thumb => property["photoThumbnailUrl"],
-            :large_thumb => property["photoLargeThumbnailUrl"]
-            )
-        puts "created listing for #{property["identifier"]}!"
-        rescue
-            puts "scraping error at #{property["identifier"]}"
-            sleep 0.15
+            Listing.create(
+              :outcode_id => my_code.id,
+              :latitude => property["latitude"],
+              :longitude => property["longitude"],
+              :property_type => property["propertyType"],
+              :bedrooms => bedrooms,
+              :price => property["price"],
+              :identifier => property["identifier"],
+              :address => property["address"],
+              :summary => property["summary"],
+              :small_thumb => property["photoThumbnailUrl"],
+              :large_thumb => property["photoLargeThumbnailUrl"]
+              )
+          puts "created listing for #{property["identifier"]}!"
+          rescue
+              puts "scraping error at #{property["identifier"]}"
+              sleep 0.15
+          end
         end
       end
     end

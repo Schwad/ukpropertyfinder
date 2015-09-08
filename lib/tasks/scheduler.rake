@@ -19,6 +19,13 @@ desc "This task is called by the Heroku scheduler add-on"
   end
 
   task :build_listings => :environment do
+    scrape_rightmove_api
+  end
 
+  task :unleash_secret_codes => :environment do
+    build_secret_codes
+  end
 
+  task :writes_secrets_to_json => :environment do
+    writes_secrets_to_json
   end

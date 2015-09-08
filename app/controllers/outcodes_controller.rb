@@ -1,0 +1,2 @@
+class OutcodesController < ApplicationController
+end

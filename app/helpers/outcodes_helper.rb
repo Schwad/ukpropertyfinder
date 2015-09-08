@@ -1,0 +1,2 @@
+module OutcodesHelper
+end

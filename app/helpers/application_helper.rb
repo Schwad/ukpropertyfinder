@@ -15,5 +15,9 @@ module ApplicationHelper
     end
   end
 
+  def scrape_rightmove_yo
 
+
+
+  end
 end

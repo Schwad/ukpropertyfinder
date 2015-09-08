@@ -7,17 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">UK Properties</a>
+        <%= link_to "UK Properties", root_path, :class => "navbar-brand" %>
       </div>
       <div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
+<!--           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">Page 1</a></li>
           <li><a href="#">Page 2</a></li>
-          <li><a href="#">Page 3</a></li>
+          <li><a href="#">Page 3</a></li> -->
         </ul>
       </div>
     </div>
@@ -27,6 +27,11 @@
       <%= yield %>
     </div>
   </div>
-  <footer class="footer"><h2>WUTUP GANASH</h2></footer>
+  <div class="footer navbar-fixed-bottom" style="background-color:#FFFFFF;">
+    <div class="container">
+      <p class="text-muted", style="text-align:left;" >A project by <%= link_to "Nick Schwaderer", "https://github.com/schwad" %>, 2015.     <div style="text-align:right; margin-top:-30px;">
+      <%= link_to "Blog", "https://theschwad.tumblr.com" %> | <%= link_to "Source Code", "https://github.com/schwad/ukpropertyfinder" %> | <%= link_to "Twitter", "https://www.twitter.com/schwad4hd14" %></div></p>
+    </div>
+  </div>
 </body>
 </html>

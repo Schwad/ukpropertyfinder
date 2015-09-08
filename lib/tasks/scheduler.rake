@@ -27,5 +27,5 @@ desc "This task is called by the Heroku scheduler add-on"
   end
 
   task :writes_secrets_to_json => :environment do
-    writes_secrets_to_json
+    write_secrets_to_json
   end
